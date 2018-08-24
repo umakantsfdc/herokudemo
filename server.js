@@ -14,8 +14,8 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'INSERT INTO salesforce.Contact (Phone, MobilePhone, FirstName, LastName, Email) VALUES ($1, $2, $3, $4, $5)',
-                  [req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
+            'INSERT INTO salesforce.Contact (Phone, MobilePhone, FirstName, LastName, Email, External_Phone_ID__c) VALUES ($1, $2, $3, $4, $5,$6)',
+                  [req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim(), req.body.external_id.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   conn.query('INSERT INTO salesforce.Contact (Phone, MobilePhone, FirstName, LastName, Email) VALUES ($1, $2, $3, $4, $5)',
