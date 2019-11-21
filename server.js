@@ -21,7 +21,7 @@ app.post('/update', function(req, res) {
                   [req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
-                  conn.query('INSERT INTO herokudemo.Contact (Phone, MobilePhone, FirstName, LastName, Email, External_Phone_ID__c) VALUES ($1, $2, $3, $4, $5)',
+                  conn.query('INSERT INTO herokudemo.Contact (Phone, MobilePhone, FirstName, LastName, Email) VALUES ($1, $2, $3, $4, $5)',
                   [req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
                   function(err, result) {
                     done();
