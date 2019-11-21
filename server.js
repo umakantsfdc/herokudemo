@@ -1,8 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-const uuidv4 = require('uuid/v4')
+const uuidv4 = require('uuid/v4');
 
-var uuid1 = uuidv4()
+var uuid1 = uuidv4();
 var pg = require('pg');
 
 var app = express();
@@ -17,7 +17,7 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'INSERT INTO herokudemo.Contact (Phone, MobilePhone, FirstName, LastName, Email, External_Phone_ID__c) VALUES ($1, $2, $3, $4, $5,$6)',
+            'INSERT INTO herokudemo.Contact (Phone, MobilePhone, FirstName, LastName, Email, External_Phone_ID__c) VALUES ($1, $2, $3, $4, $5, $6)',
                   [req.body.phone.trim(), req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim(), uuid1],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
