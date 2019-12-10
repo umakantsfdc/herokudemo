@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Create or Update Contact</title>
+    <title>Create Lead</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <style>
@@ -27,8 +27,9 @@
                 var lastName = $("#lastName").val();
                 var email = $("#email").val();
                 var phone = $("#phone").val();
+				var company = $("#company").val();
 
-                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0) {
+                if (firstName.length == 0 || lastName.length == 0 || email.length == 0 || phone.length == 0 || company.length == 0) {
                     errorMessage.text("All of the fields are required.");
                     error.show();
                 }
@@ -40,7 +41,8 @@
                             firstName: firstName,
                             lastName: lastName,
                             email: email,
-                            phone: phone
+                            phone: phone,
+							company: company
                         }),
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
@@ -49,7 +51,8 @@
                             $("#lastName").val("");
                             $("#email").val("");
                             $("#phone").val("");
-                            $("#messageMessage").text("Contact has been updated!");
+                            $("#company").val("");
+                            $("#messageMessage").text("Lead has been updated!");
                             $("#message").show();
                         },
                         error: function(err) {
@@ -67,7 +70,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Create Contact by Heroku APP</a>
+                <a class="navbar-brand" href="/">Create Lead by Heroku APP</a>
             </div>
         </div>
     </nav>
@@ -76,7 +79,7 @@
         <form id="phoneChangerForm" action="/update" method="post" style="width: 400px">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Create Contact</h3>
+                    <h3 class="panel-title">Create Lead</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -95,6 +98,10 @@
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="tel" class="form-control" id="phone" placeholder="New Phone Number" required>
+                    </div>
+					<div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="tel" class="form-control" id="company" placeholder="Company Name" required>
                     </div>
                 </div>
                 <div class="panel-footer">
