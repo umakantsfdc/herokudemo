@@ -14,8 +14,8 @@ app.post('/update', function(req, res) {
         // watch for any connect issues
         if (err) console.log(err);
         conn.query(
-            'UPDATE herokudemo.Lead SET Phone = $1, MobilePhone = $1 WHERE LOWER(FirstName) = LOWER($2) AND LOWER(LastName) = LOWER($3) AND LOWER(Email) = LOWER($4)',
-            [req.body.phone.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
+            'UPDATE herokudemo.Lead SET Phone = $1, MobilePhone = $1, Company = $2 WHERE LOWER(FirstName) = LOWER($3) AND LOWER(LastName) = LOWER($4) AND LOWER(Email) = LOWER($5)',
+            [req.body.phone.trim(), req.body.company.trim(), req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim()],
             function(err, result) {
                 if (err != null || result.rowCount == 0) {
                   conn.query('INSERT INTO herokudemo.Lead (Phone, MobilePhone, FirstName, LastName, Email, Company) VALUES ($1, $2, $3, $4, $5, $6)',
