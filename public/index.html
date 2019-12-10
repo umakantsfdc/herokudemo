@@ -14,7 +14,7 @@
     </style>
     <script>
         $(function() {
-            $("#phoneChangerForm").submit(function(event) {
+            $("#createLeadForm").submit(function(event) {
                 event.preventDefault();
 
                 var errorMessage = $("#errorMessage");
@@ -52,7 +52,7 @@
                             $("#email").val("");
                             $("#phone").val("");
                             $("#company").val("");
-                            $("#messageMessage").text("Lead has been updated!");
+                            $("#messageMessage").text("Lead has been created!");
                             $("#message").show();
                         },
                         error: function(err) {
@@ -76,7 +76,7 @@
     </nav>
 
     <div class="container">
-        <form id="phoneChangerForm" action="/update" method="post" style="width: 400px">
+        <form id="createLeadForm" action="/createLead" method="post" style="width: 400px">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Create Lead</h3>
